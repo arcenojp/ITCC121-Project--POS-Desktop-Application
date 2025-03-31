@@ -83,12 +83,10 @@ public class Sales extends JFrame{
         }
     }
     private void processTransaction() {
-        // Validate inputs
         if (!validateInputs()) {
-            return; // Stop if validation fails
+            return; 
         }
 
-        // 2. Get all transaction details
         int quantity = Integer.parseInt(txtQuantity.getText());
         double price = Double.parseDouble(txtPrice.getText());
         double total = quantity * price;
@@ -97,25 +95,25 @@ public class Sales extends JFrame{
         String paymentMethod = (String) this.paymentMethod.getSelectedItem();
         String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         Transaction transaction = new Transaction(
-                "TRX-" + System.currentTimeMillis(), // Unique ID
+                "TRX-" + System.currentTimeMillis(), 
                 txtProductID.getText(),
                 txtProductName.getText(),
                 quantity,
                 price,
                 total,
                 customer,
-                paymentMethod, // Already gets selected method from combo box
+                paymentMethod, 
                 new Date()
         );
         allTransactions.add(transaction);
-        // 3. Update inventory
-        int newQuantity = currentQuantity - quantity;
-        inventoryModel.setValueAt(newQuantity, inventoryRow, 4); // Update quantity in inventory
 
-        // 4. Generate and show receipt
+        int newQuantity = currentQuantity - quantity;
+        inventoryModel.setValueAt(newQuantity, inventoryRow, 4); 
+
+
         String receipt = generateReceipt(date, quantity, total, customer, paymentMethod);
 
-        // 5. Show confirmation dialog
+
         int option = JOptionPane.showConfirmDialog(
                 this,
                 receipt,
@@ -124,13 +122,12 @@ public class Sales extends JFrame{
                 JOptionPane.INFORMATION_MESSAGE
         );
 
-        // 6. If confirmed, close window
         if (option == JOptionPane.OK_OPTION) {
             JOptionPane.showMessageDialog(this,
                     "Transaction completed successfully!",
                     "Success",
                     JOptionPane.INFORMATION_MESSAGE);
-            dispose(); // Close the sales window
+            dispose();
         }
     }
 
@@ -169,7 +166,6 @@ public class Sales extends JFrame{
         try {
             int qty = Integer.parseInt(txtQuantity.getText());
 
-            // Check if quantity is positive
             if (qty <= 0) {
                 JOptionPane.showMessageDialog(this,
                         "Quantity must be greater than 0",
@@ -177,7 +173,6 @@ public class Sales extends JFrame{
                 return false;
             }
 
-            // Check if enough stock exists
             if (qty > currentQuantity) {
                 JOptionPane.showMessageDialog(this,
                         "Only " + currentQuantity + " units available!",
