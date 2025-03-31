@@ -41,7 +41,7 @@ public class SalesReport extends JFrame {
         DefaultTableModel model = new DefaultTableModel(columns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Make table read-only
+                return false; 
             }
         };
         salesTable.setModel(model);
@@ -49,14 +49,14 @@ public class SalesReport extends JFrame {
 
     private void generateReport(ActionEvent e) {
         DefaultTableModel model = (DefaultTableModel) salesTable.getModel();
-        model.setRowCount(0); // Clear existing data
+        model.setRowCount(0); 
 
-        // Get transactions from Sales class
+
         List<Transaction> transactions = Sales.getAllTransactions();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         double grandTotal = 0;
 
-        // Populate table with real transaction data
+
         for (Transaction t : transactions) {
             model.addRow(new Object[]{
                     t.getTransactionId(),
@@ -72,10 +72,9 @@ public class SalesReport extends JFrame {
             grandTotal += t.getTotal();
         }
 
-        // Update total sales label
         lblTotalSales.setText(String.format("Total Sales: ₱%.2f", grandTotal));
 
-        // Auto-resize columns
+  
         for (int i = 0; i < salesTable.getColumnCount(); i++) {
             salesTable.getColumnModel().getColumn(i).setPreferredWidth(100);
         }
@@ -83,7 +82,6 @@ public class SalesReport extends JFrame {
 
 
     private void printReport(ActionEvent e) {
-        // TODO: Add printing logic
         JOptionPane.showMessageDialog(this, "Printing feature will be implemented here");
     }
 
@@ -98,7 +96,7 @@ private void searchTransactions(ActionEvent e) {
     if (keyword.isEmpty()) {
         sorter.setRowFilter(null);
     } else {
-        // Search in specific columns based on filter
+ 
         switch (filterType) {
             case "Product ID":
                 sorter.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 2));
@@ -106,7 +104,7 @@ private void searchTransactions(ActionEvent e) {
             case "Customer":
                 sorter.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 7));
                 break;
-            default: // Search all columns
+            default:
                 sorter.setRowFilter(RowFilter.regexFilter("(?i)" + keyword));
         }
     }
