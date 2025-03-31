@@ -137,8 +137,6 @@ public class Inventory  extends JFrame{
     }
 
     private boolean validateInputs() {
-        // Basic validation logic
-        // Should check for empty fields, valid numbers, etc.
         return true;
     }
     private void openTransactionForm() {
@@ -153,7 +151,6 @@ public class Inventory  extends JFrame{
         double price = Double.parseDouble(inventoryTable.getValueAt(selectedRow, 3).toString());
         int currentQuantity = Integer.parseInt(inventoryTable.getValueAt(selectedRow, 4).toString());
 
-        // Pass the actual table model and row index
         new Sales(productID, productName, price, currentQuantity,
                 (DefaultTableModel) inventoryTable.getModel(), selectedRow).setVisible(true);
     }
@@ -165,6 +162,6 @@ public class Inventory  extends JFrame{
 
             public static void main(String[] args) {
                 SwingUtilities.invokeLater(() -> {
-                    new Inventory().setVisible(true); // Launch the main inventory window
+                    new Inventory().setVisible(true);
                 });
             }}
