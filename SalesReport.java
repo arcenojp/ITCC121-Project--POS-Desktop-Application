@@ -82,9 +82,24 @@ public class SalesReport extends JFrame {
 
 
     private void printReport(ActionEvent e) {
-        JOptionPane.showMessageDialog(this, "Printing feature will be implemented here");
-    }
+      try {
+            MessageFormat header = new MessageFormat("Sales Report");
+            MessageFormat footer = new MessageFormat("Page {0}");
 
+            JTable.PrintMode printMode = JTable.PrintMode.FIT_WIDTH;
+            boolean complete = salesTable.print(printMode, header, footer);
+            if (complete) {
+                JOptionPane.showMessageDialog(this, "Printing complete", "Print Status",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Printing cancelled", "Print Status",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (java.awt.print.PrinterException pe) {
+            JOptionPane.showMessageDialog(this, "Printing failed: " + pe.getMessage(),
+                    "Print Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 private void searchTransactions(ActionEvent e) {
     String keyword = txtSearch.getText().trim().toLowerCase();
     String filterType = cmbFilter.getSelectedItem().toString();
