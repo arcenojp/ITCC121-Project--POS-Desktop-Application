@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Inventory">
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="8" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="5" left="5" bottom="5" right="5"/>
+    <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
       <xy x="20" y="20" width="698" height="400"/>
     </constraints>
@@ -185,6 +185,7 @@
               <autoCreateRowSorter value="true"/>
               <background color="-986385"/>
               <fillsViewportHeight value="true"/>
+              <font style="1"/>
               <foreground color="-16448250"/>
               <gridColor color="-16448250"/>
               <showVerticalLines value="true"/>
