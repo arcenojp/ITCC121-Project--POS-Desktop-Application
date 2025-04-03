@@ -17,9 +17,7 @@ public class Sales extends JFrame{
     private JTextField txtCustomer;
     private JButton processButton;
     private JButton cancelButton;
-    private JLabel I;
     private JComboBox<String> paymentMethod;
-    private JLabel txtTotal;
     private DefaultTableModel inventoryModel;
     private int inventoryRow;
     private int currentQuantity;
