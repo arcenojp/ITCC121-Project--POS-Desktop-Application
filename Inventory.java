@@ -32,7 +32,7 @@ public class Inventory  extends JFrame{
         setLocationRelativeTo(null);
         setSize(800,600);
         String[] columnNames = {"Product ID", "Product Name", "Category", "Price (₱)", "Quantity"};
-        tableModel = new DefaultTableModel(columnNames, 1);
+        tableModel = new DefaultTableModel(columnNames, 0);
         inventoryTable.setModel(tableModel);
         String[] categories = {"Electronics", "Clothing", "Food", "Furniture", "Other"};
         categoryComboBox.setModel(new DefaultComboBoxModel<>(categories));
